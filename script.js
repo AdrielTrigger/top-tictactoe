@@ -140,7 +140,7 @@ const game = (() => {
     }
         
 
-    return { board, markBoard, winCheck }
+    return { board, markBoard, winCheck, boardClear }
 })();
 
 const player = (marker) => {
@@ -169,5 +169,7 @@ htmlBoard.addEventListener('click', (e) => {
         priority = player2;
     } else if (mark == player2.putMarker()) {
         priority = player1;
+    } else {
+        game.boardClear();
     }
 });
