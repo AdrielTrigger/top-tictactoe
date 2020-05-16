@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(154, 167, 167);
+    display: flex;
+    justify-content: center;
+}
+
+.game {
+    width: 500px;
+}
+
+.score {
+    height: 200px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.player1, .player2 {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.board {
+    height: 500px;
+    background-color: blue;
+    display: grid;
+    grid-template: repeat(3,1fr)/repeat(3,1fr);
+    grid-gap: 10px;
+}
+
+.space {
+    background-color: rgb(154, 167, 167);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    color: azure;
+}
