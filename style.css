@@ -53,19 +53,3 @@ body {
     font-size: 60px;
     color: azure;
 }
-
-@media all (pointer:none) and (orientation:landscape) {
-    .game {
-        width: 70vw;
-        flex-direction: row;
-    }
-
-    .score {
-        flex-direction: column;
-    }
-
-    .player1, .player2 {
-        height: 45%;
-        width: 90%;
-    }
-}

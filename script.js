@@ -9,53 +9,54 @@ const game = (() => {
     player1score.textContent = scores.player1;
     player2score.textContent = scores.player2;
 
-    const markBoard = (player,e) => {
-        let space = getEventTarget(e);
+    const advance = () => {
+        changePriority();
+        turns++;
+    }
+
+    const markBoard = (player,target) => {
+        let space = target;
         let mark1 = player1.putMarker();
         let mark2 = player2.putMarker();
 
         if (space.textContent != mark1 && space.textContent != mark2) {
-            switch (space.id) {
-                case 'one':
-                    space.textContent = player.putMarker();
-                    board[0][0] = player.putMarker();
-                    break;
-                case 'two':
-                    space.textContent = player.putMarker();
-                    board[0][1] = player.putMarker();
-                    break;
-                case 'three':
-                    space.textContent = player.putMarker();
-                    board[0][2] = player.putMarker();
-                    break;
-                case 'four':
-                    space.textContent = player.putMarker();
-                    board[1][0] = player.putMarker();
-                    break;
-                case 'five':
-                    space.textContent = player.putMarker();
-                    board[1][1] = player.putMarker();
-                    break;
-                case 'six':
-                    space.textContent = player.putMarker();
-                    board[1][2] = player.putMarker();
-                    break;
-                case 'seven':
-                    space.textContent = player.putMarker();
-                    board[2][0] = player.putMarker();
-                    break;
-                case 'eight':
-                    space.textContent = player.putMarker();
-                    board[2][1] = player.putMarker();
-                    break;
-                case 'nine':
-                    space.textContent = player.putMarker();
-                    board[2][2] = player.putMarker();
-                    break;
+            if (space.id == 'one') {
+                space.textContent = player.putMarker();
+                board[0][0] = player.putMarker();
+                advance();
+            } else if (space.id == 'two') {
+                space.textContent = player.putMarker();
+                board[0][1] = player.putMarker();
+                advance();
+            } else if (space.id == 'three') {
+                space.textContent = player.putMarker();
+                board[0][2] = player.putMarker();
+                advance();
+            } else if (space.id == 'four') {
+                space.textContent = player.putMarker();
+                board[1][0] = player.putMarker();
+                advance();
+            } else if (space.id == 'five') {
+                space.textContent = player.putMarker();
+                board[1][1] = player.putMarker();
+                advance();
+            } else if (space.id == 'six') {
+                space.textContent = player.putMarker();
+                board[1][2] = player.putMarker();
+                advance();
+            } else if (space.id == 'seven') {
+                space.textContent = player.putMarker();
+                board[2][0] = player.putMarker();
+                advance();
+            } else if (space.id == 'eight') {
+                space.textContent = player.putMarker();
+                board[2][1] = player.putMarker();
+                advance();
+            } else if (space.id == 'nine') {
+                space.textContent = player.putMarker();
+                board[2][2] = player.putMarker();
+                advance();
             }
-            changePriority();
-            console.log(player.putMarker());
-            turns++;
             console.log(turns);
         }
         winCheck();
@@ -113,7 +114,7 @@ const game = (() => {
     }
         
 
-    return { board, markBoard, winCheck, boardClear }
+    return { board, turns, markBoard, winCheck, boardClear }
 })();
 
 const player = (marker) => {
@@ -131,8 +132,8 @@ let priority = player1;
 let htmlBoard = document.querySelector('.board');
 
 function getEventTarget(e) {
-    e = e;
-    return e.target;
+    e = e || window.event;
+    return e.target || e.srcElement;
 }
 
 let player1colors = document.querySelector('.player1');
@@ -165,5 +166,6 @@ function showPriority(priority) {
 showPriority(priority);
 
 htmlBoard.addEventListener('click', (e) => { 
-    game.markBoard(priority,e);
+    target = getEventTarget(e);
+    game.markBoard(priority,target);
 });
