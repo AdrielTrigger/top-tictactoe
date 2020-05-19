@@ -53,6 +53,8 @@ const game = (() => {
                     board[2][2] = player.putMarker();
                     break;
             }
+            changePriority();
+            console.log(player.putMarker());
             turns++;
             console.log(turns);
         }
@@ -136,6 +138,15 @@ function getEventTarget(e) {
 let player1colors = document.querySelector('.player1');
 let player2colors = document.querySelector('.player2');
 
+function changePriority() {
+    let mark = priority.putMarker();
+    if (mark == 'X') {
+        priority = player2;
+    } else {
+        priority = player1;
+    }
+}
+
 function showPriority(priority) {
     if (priority == player1) {
         player1colors.style.setProperty('background-color', 'rgb(138, 20, 20)');
@@ -154,11 +165,5 @@ showPriority(priority);
 
 htmlBoard.addEventListener('click', (e) => { 
     game.markBoard(priority,e);
-    let mark = getEventTarget(e).textContent;
-    if (priority == player1 && mark == player1.putMarker()) {
-        priority = player2;
-    } else if (mark == player2.putMarker()) {
-        priority = player1;
-    }
     showPriority(priority);
 });
