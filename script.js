@@ -11,8 +11,10 @@ const game = (() => {
 
     const markBoard = (player,e) => {
         let space = getEventTarget(e);
+        let mark1 = player1.putMarker();
+        let mark2 = player2.putMarker();
 
-        if (space.textContent == '') {
+        if (space.textContent != mark1 && space.textContent != mark2) {
             switch (space.id) {
                 case 'one':
                     space.textContent = player.putMarker();
