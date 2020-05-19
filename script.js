@@ -145,6 +145,7 @@ function changePriority() {
     } else {
         priority = player1;
     }
+    showPriority(priority);
 }
 
 function showPriority(priority) {
@@ -165,5 +166,4 @@ showPriority(priority);
 
 htmlBoard.addEventListener('click', (e) => { 
     game.markBoard(priority,e);
-    showPriority(priority);
 });
