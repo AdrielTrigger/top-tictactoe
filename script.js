@@ -51,8 +51,9 @@ const game = (() => {
                     board[2][2] = player.putMarker();
                     break;
             }
+            turns++;
+            console.log(turns);
         }
-        turns++;
         winCheck();
     }
 
@@ -156,8 +157,6 @@ htmlBoard.addEventListener('click', (e) => {
         priority = player2;
     } else if (mark == player2.putMarker()) {
         priority = player1;
-    } else {
-        game.boardClear();
     }
     showPriority(priority);
 });
