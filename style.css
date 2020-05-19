@@ -60,7 +60,7 @@ body {
     color: azure;
 }
 
-@media screen and (orientation: landscape) and (pointer: none) {
+@media all (pointer:none) and (orientation:landscape) {
     .game {
         width: 70vw;
         flex-direction: row;
