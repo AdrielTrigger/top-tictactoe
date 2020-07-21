@@ -53,3 +53,20 @@ body {
     font-size: 60px;
     color: azure;
 }
+
+@media (orientation: landscape) {
+    body {
+        width: 100vw;
+    }
+    
+    .game {
+        width: 800px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .score {
+        flex-direction: column;
+        align-items: center;
+    }
+}
